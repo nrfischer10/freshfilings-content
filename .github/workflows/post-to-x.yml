@@ -1,0 +1,67 @@
+name: Post draft to X
+
+# Fires when a draft-*.md file is merged into main (i.e. a cloud-agent
+# draft PR is approved and merged). Posts the tweet + reply link, then
+# updates log.md status to "posted".
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'content/x/draft-*.md'
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Find new draft added in this push
+        id: find_draft
+        run: |
+          NEW=$(git diff --name-only --diff-filter=A HEAD~1 HEAD -- 'content/x/draft-*.md' | head -1)
+          echo "draft_file=$NEW" >> "$GITHUB_OUTPUT"
+          if [ -z "$NEW" ]; then
+            echo "No new draft file detected — skipping post."
+          else
+            echo "Draft to post: $NEW"
+          fi
+
+      - name: Set up Python
+        if: steps.find_draft.outputs.draft_file != ''
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install tweepy
+        if: steps.find_draft.outputs.draft_file != ''
+        run: pip install tweepy
+
+      - name: Post to X
+        if: steps.find_draft.outputs.draft_file != ''
+        env:
+          X_API_KEY: ${{ secrets.X_API_KEY }}
+          X_API_SECRET: ${{ secrets.X_API_SECRET }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
+          DRAFT_FILE: ${{ steps.find_draft.outputs.draft_file }}
+        run: python scripts/post_to_x.py
+
+      - name: Mark draft as posted in log.md
+        if: steps.find_draft.outputs.draft_file != ''
+        run: |
+          DRAFT="${{ steps.find_draft.outputs.draft_file }}"
+          # Extract the draft number (e.g. "02" from "content/x/draft-02-foo.md")
+          NUM=$(echo "$DRAFT" | grep -oP 'draft-\K\d+')
+          # Flip the status column for that row in the log table
+          sed -i "s/| $NUM |.*draft /| $NUM | $(date +%Y-%m-%d) | posted /" content/x/log.md || true
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add content/x/log.md
+          git diff --cached --quiet || git commit -m "chore: mark draft-$NUM as posted [skip ci]"
+          git push
