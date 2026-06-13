@@ -22,6 +22,7 @@ The running record of every X post so we don't repeat ourselves. Before drafting
 | # | date | status | angle | one-line hook | file |
 |---|------|--------|-------|---------------|------|
 | 1 | 2026-06-12 | draft | origin | student letting Claude build & run a real business, 20M+ records live | [draft-01-launch.md](draft-01-launch.md) |
+| 2 | 2026-06-13 | draft | behind-the-scenes | Claude writes my tweets, here's exactly how the auto-posting pipeline works | [draft-02-auto-post-pipeline.md](draft-02-auto-post-pipeline.md) |
 
 ---
 
