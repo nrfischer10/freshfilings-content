@@ -23,8 +23,10 @@ The running record of every X post so we don't repeat ourselves. Before drafting
 |---|------|--------|-------|---------------|------|
 | 1 | 2026-06-12 | draft | origin | student letting Claude build & run a real business, 20M+ records live | [draft-01-launch.md](draft-01-launch.md) |
 | 2 | 2026-06-13 | draft | behind-the-scenes | Claude writes my tweets, here's exactly how the auto-posting pipeline works | [draft-02-auto-post-pipeline.md](draft-02-auto-post-pipeline.md) |
+| 3 | 2026-06-24 | draft | lesson | built auto-tweeter, killed it after one day when I pulled back from full automation | [draft-03-lesson-auto-post-pullback.md](draft-03-lesson-auto-post-pullback.md) |
 
 ---
 
 ## Notes / things NOT to repeat
 - (nothing posted live yet)
+- auto-posting pipeline / tweepy topic covered in drafts 02 and 03
