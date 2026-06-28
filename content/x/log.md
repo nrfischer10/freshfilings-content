@@ -23,7 +23,7 @@ The running record of every X post so we don't repeat ourselves. Before drafting
 |---|------|--------|-------|---------------|------|
 | 1 | 2026-06-12 | draft | origin | student letting Claude build & run a real business, 20M+ records live | [draft-01-launch.md](draft-01-launch.md) |
 | 2 | 2026-06-13 | draft | behind-the-scenes | Claude writes my tweets, here's exactly how the auto-posting pipeline works | [draft-02-auto-post-pipeline.md](draft-02-auto-post-pipeline.md) |
-| 3 | 2026-06-15 | draft | milestone | Stripe live, three paid tiers, zero customers | [draft-03-stripe-live.md](draft-03-stripe-live.md) |
+| 3 | 2026-06-28 | draft | milestone | Stripe checkout live, three tiers, zero customers so far | [draft-03-stripe-live.md](draft-03-stripe-live.md) |
 
 ---
 

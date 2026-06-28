@@ -1,21 +1,20 @@
 ---
 angle: milestone
 status: draft
-date: 2026-06-15
+date: 2026-06-28
 ---
 
 ## POST TEXT
-Stripe live. Three paid tiers. Zero customers.
+Zero customers. But the Stripe checkout is live on FreshFilings.
 
-$29/$99/$299/mo for the API. $49/mo per state for a daily feed of new businesses (straight from state filings). Free tier: 100 calls, no signup.
+Three tiers: $29, $99, $299/mo. Free 100-call tier included. I honestly don't know if anyone's going to pay for this yet.
 
-Nobody's paid yet. Is the pricing right, or am I completely off?
+If you use company data in your app, what do you actually need from an API?
 
 ## REPLY LINK
 https://freshfilings.dev
 
 ## Notes
-Angle: milestone — Stripe checkout going live with three API tiers ($29/$99/$299) plus the leads feed ($49/mo per state) and a free 100-call tier, all with $0 revenue so far.
-Fresh vs log: origin (draft-01) and behind-the-scenes (draft-02) are the only angles used. Milestone is untouched.
-Grounded in: pricing tiers and Stripe integration confirmed in session context ($29/$99/$299, $49/mo-per-state leads feed, 100-call free tier). No numbers invented.
-Caveat: freshfilings.dev returned 403 and the freshfilings repo is private, so no live commit details were accessible. All figures come from the session context provided by Noah.
+Angle: milestone — Stripe checkout live with full pricing structure ($29/$99/$299 + 100-call free tier).
+Fresh vs log: draft-01 (origin) mentioned $29 and $49/mo briefly in passing; draft-02 (behind-the-scenes) was about the auto-posting pipeline. This is the first dedicated milestone post focusing on pricing going live. The "$0 customers + checkout live" tension is a different axis than either prior draft.
+Caveat: freshfilings.dev and the freshfilings repo are both inaccessible from this environment (403 / private). All facts used come from session context in the task prompt: the $29/$99/$299 + free 100-call tier pricing and Stripe checkout are stated as live there.
